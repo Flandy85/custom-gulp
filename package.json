@@ -1,0 +1,38 @@
+{
+  "name": "projectname",
+  "version": "1.0.0",
+  "description": "\"# projectname\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm start",
+    "sass": "node-sass assets/scss --output-style compressed -o assets/dist",
+    "autoprefixer": "postcss -u autoprefixer -r assets/dist/*.css",
+    "babel": "babel assets/js/app.js --out-file assets/dist/app.min.js --presets=es2015",
+    "build:css": "npm run sass && npm run autoprefixer",
+    "watch:css": "onchange \"assets/scss/**/*\" -- npm run build:css",
+    "watch:js": "onchange assets/js/app.js -- npm run babel",
+    "serve": "browser-sync start --server --files \"*.*, assets/dist/*\" ",
+    "start": "npm-run-all --parallel serve watch:*"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "browser-sync": "^2.18.8",
+    "node-sass": "^4.5.2",
+    "npm-run-all": "^4.0.2",
+    "onchange": "^3.2.1",
+    "postcss-cli": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xhkr/hair.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xhkr/hair/issues"
+  },
+  "homepage": "https://github.com/xhkr/hair#readme"
+}
